@@ -1,12 +1,11 @@
 from rest_framework import serializers
 from .models import Restauracja, Danie, Zamowienie, Szczegoly
 
-
 class RestauracjaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Restauracja
-        fields=["Nazwa", "Adres", "Rodzaj_dan","Cena_dostawy","Kategoria"]
+        fields=["Nazwa", "Adres", "Rodzaj_dan", "Cena_dostawy", "Kategoria"]
 
     # def create(self, validated_data):
     #     return Restauracja.objects.create(validated_data)
@@ -37,7 +36,7 @@ class SzczegolySerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Szczegoly
-        fields=["Ilosc","Cena"]
+        fields=["Ilosc", "Cena"]
 
     def to_representation(self, instance):
         return instance.Cena
