@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django_filters import DateTimeFilter, FilterSet
+from django_filters import DateTimeFilter, FilterSet, NumberFilter, AllValuesFilter
 from rest_framework import viewsets
 from jedzenie.models import Restauracja, Danie, Zamowienie, Szczegoly
 from jedzenie.serializers import RestauracjaSerializer, DanieSerializer, ZamowienieSerializer, SzczegolySerializer
+from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 # class DateFilter(FilterSet):
@@ -35,3 +36,11 @@ class SzczegolyView(viewsets.ModelViewSet):
     queryset = Szczegoly.objects.all()
 
     serializer_class = SzczegolySerializer
+
+class DanieFilter(FilterSet):
+    min_cena = NumberFilter(field_name='Cena', lookup_expr='gte')
+    max_cena = NumberFilter(field_name='Cena', lookup_expr='lte')
+
+    class Meta:
+        model = Danie
+        fields = ['min_cena', 'max_cena']
