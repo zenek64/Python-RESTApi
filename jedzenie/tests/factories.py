@@ -37,14 +37,3 @@ class ZamowienieFactory(factory.django.DjangoModelFactory):
     Telefon = faker.phone_number()
     Email = factory.Sequence(lambda n: f'Email {n}')
     Data = faker.date()
-
-
-# class DanieFactory(factory.django.DjangoModelFactory):
-#     class Meta:
-#         model = Danie
-#
-#     idRestauracja = factory.SubFactory(RestauracjaFactory)
-#     Nazwa = factory.Sequence(lambda n: f'Nazwa {n}')
-#     Rodzaj = factory.Sequence(lambda n: f'Rodzaj {n}')
-#     Cena = factory.Sequence(lambda n: n)
-

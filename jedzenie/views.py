@@ -1,18 +1,8 @@
-from django.shortcuts import render
-from django_filters import DateTimeFilter, FilterSet, NumberFilter, AllValuesFilter
+from django_filters import FilterSet, NumberFilter
 from rest_framework import viewsets
 from jedzenie.models import Restauracja, Danie, Zamowienie, Szczegoly
 from jedzenie.serializers import RestauracjaSerializer, DanieSerializer, ZamowienieSerializer, SzczegolySerializer
-from rest_framework.filters import SearchFilter, OrderingFilter
 
-
-# class DateFilter(FilterSet):
-#     from_date = DateTimeFilter(field_name="Data", lookup_expr="gte")
-#     to_date = DateTimeFilter(field_name="Data", lookup_expr="lte")
-#
-#     class Meta:
-#         model = Zamowienie
-#         fields = ["from_date", "to_date"]
 
 class RestauracjaView(viewsets.ModelViewSet):
     queryset = Restauracja.objects.all()
@@ -36,6 +26,7 @@ class SzczegolyView(viewsets.ModelViewSet):
     queryset = Szczegoly.objects.all()
 
     serializer_class = SzczegolySerializer
+
 
 class DanieFilter(FilterSet):
     min_cena = NumberFilter(field_name='Cena', lookup_expr='gte')

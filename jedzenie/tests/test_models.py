@@ -11,7 +11,6 @@ import factory.fuzzy
 # Local
 from jedzenie.tests.factories import RestauracjaFactory
 from jedzenie.tests.factories import ZamowienieFactory
-# from jedzenie.tests.factories import DanieFactory
 
 
 class TestModels(TestCase):
@@ -39,12 +38,3 @@ class TestModels(TestCase):
         self.assertEqual(f'{my_model.Adres}', str(my_model))
         self.assertEqual(f'{my_model.Adres}', "Adres 0")
         self.assertEqual(f'{my_model2.Adres}', "Adres 1")
-
-    # @factory.django.mute_signals(signals.post_save)
-    # def test_Danie(self):
-    #     """Test dań."""
-    #     my_model = DanieFactory()
-    #
-    #     self.assertEqual(f'{my_model.idRestauracja}', str(my_model))
-    #     self.assertEqual(f'{my_model.Nazwa}', "Nazwa dania 0")
-
