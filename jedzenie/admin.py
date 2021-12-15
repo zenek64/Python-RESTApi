@@ -1,8 +1,6 @@
 from django.contrib import admin
-from .models import Restauracja
-from .models import Danie
-from .models import Zamowienie
-from .models import Szczegoly
+
+from .models import Danie, Restauracja, Szczegoly, Zamowienie
 
 # Register your models here.
 admin.site.register(Restauracja)

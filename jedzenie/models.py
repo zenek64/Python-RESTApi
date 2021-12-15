@@ -40,5 +40,6 @@ class Zamowienie(models.Model):
 class Szczegoly(models.Model):
     Ilosc = models.IntegerField()
     Cena = models.FloatField(max_length=45)
-    Zamowienie_idZamowienie = models.ForeignKey(Zamowienie, on_delete=models.CASCADE)
+    Zamowienie_idZamowienie = models.ForeignKey(Zamowienie,
+                                                on_delete=models.CASCADE)
     Danie_idDanie = models.ForeignKey(Danie, on_delete=models.CASCADE)

@@ -7,10 +7,8 @@ from django.test import TestCase
 
 # 3rd-party
 import factory.fuzzy
-
 # Local
-from jedzenie.tests.factories import RestauracjaFactory
-from jedzenie.tests.factories import ZamowienieFactory
+from jedzenie.tests.factories import RestauracjaFactory, ZamowienieFactory
 
 
 class TestModels(TestCase):

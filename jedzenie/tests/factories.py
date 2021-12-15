@@ -2,9 +2,7 @@
 
 import factory.fuzzy
 from faker import Faker
-
-from jedzenie.models import Restauracja
-from jedzenie.models import Zamowienie
+from jedzenie.models import Restauracja, Zamowienie
 
 faker = Faker('pl_PL')
 

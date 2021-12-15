@@ -1,15 +1,11 @@
-from django.shortcuts import render
-from django_filters import DateTimeFilter, FilterSet, NumberFilter, AllValuesFilter
-from rest_framework import viewsets, permissions, filters
-from jedzenie.models import Restauracja, Danie, Zamowienie, Szczegoly
-from jedzenie.serializers import RestauracjaSerializer, DanieSerializer, ZamowienieSerializer, SzczegolySerializer
-from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters import DateTimeFilter, FilterSet, NumberFilter
 from django_filters import rest_framework as filters
+from rest_framework import permissions, viewsets
 
-from django_filters import FilterSet, NumberFilter
-from rest_framework import viewsets
-from jedzenie.models import Restauracja, Danie, Zamowienie, Szczegoly
-from jedzenie.serializers import RestauracjaSerializer, DanieSerializer, ZamowienieSerializer, SzczegolySerializer
+from jedzenie.models import Danie, Restauracja, Szczegoly, Zamowienie
+from jedzenie.serializers import (DanieSerializer, RestauracjaSerializer,
+                                  SzczegolySerializer, ZamowienieSerializer)
+
 
 class DanieFilter(FilterSet):
     min_cena = NumberFilter(field_name='Cena', lookup_expr='gte')
@@ -19,10 +15,10 @@ class DanieFilter(FilterSet):
         model = Danie
         fields = ['min_cena', 'max_cena']
 
+
 class DateFilter(FilterSet):
     from_date = DateTimeFilter(field_name="Data", lookup_expr="gte")
     to_date = DateTimeFilter(field_name="Data", lookup_expr="lte")
-
 
     class Meta:
         model = Zamowienie
@@ -33,7 +29,7 @@ class RestauracjaView(viewsets.ModelViewSet):
     queryset = Restauracja.objects.all()
 
     serializer_class = RestauracjaSerializer
-    search_fields=["Nazwa"]
+    search_fields = ["Nazwa"]
 
 
 class DanieView(viewsets.ModelViewSet):
@@ -42,6 +38,7 @@ class DanieView(viewsets.ModelViewSet):
     serializer_class = DanieSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = DanieFilter
+
 
 class ZamowienieView(viewsets.ModelViewSet):
     queryset = Zamowienie.objects.all().order_by("-Data")
@@ -56,4 +53,3 @@ class SzczegolyView(viewsets.ModelViewSet):
 
     serializer_class = SzczegolySerializer
     permission_classes = [permissions.IsAuthenticated]
-
