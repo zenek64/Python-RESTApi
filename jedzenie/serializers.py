@@ -37,7 +37,3 @@ class SzczegolySerializer(serializers.ModelSerializer):
 
         model=Szczegoly
         fields=["Ilosc", "Cena","Zamowienie_idZamowienie","Danie_idDanie"]
-
-
-        model = Szczegoly
-        fields = ["Ilosc", "Cena"]
