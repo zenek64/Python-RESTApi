@@ -1,2 +1,2 @@
 # aplikacjawww
-aplikacja www na zajęcia
+Django RESTAPI
